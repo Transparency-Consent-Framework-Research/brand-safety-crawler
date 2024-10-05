@@ -1,0 +1,6 @@
+{
+  "persistStateIntervalMillis": 10000,
+  "logLevel": "INFO",
+  "headless": false,
+  "availableMemoryRatio": 0.5
+}
