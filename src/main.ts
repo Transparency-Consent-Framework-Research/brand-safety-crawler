@@ -53,15 +53,9 @@ const crawler = new PlaywrightCrawler({
                 if (typeof source !== 'object' || source === null) {
                     return source; // Primitives (string, number, boolean, null, undefined, symbol)
                 }
-            
+
                 // 2. Check if we've reached the maximum depth
                 if (currentDepth >= maxDepth) {
-                    // If it's an array or object at max depth, decide what to return.
-                    // Option A: A simple placeholder
-                    // return Array.isArray(source) ? '[Array Max Depth]' : '[Object Max Depth]';
-                    // Option B: An empty version of itself (might be safer if downstream code expects an object/array)
-                    // return Array.isArray(source) ? [] : {};
-                    // Option C: (More advanced) Just its primitive properties if it's an object
                     if (Array.isArray(source)) return []; // Or a placeholder like "[Array Truncated]"
                     const shallowObj = {};
                     for (const key in source) {
@@ -73,7 +67,7 @@ const crawler = new PlaywrightCrawler({
                     }
                     return shallowObj; // Returns only primitive properties at max depth
                 }
-            
+
                 // 3. If it's an array, map over its elements and recursively copy
                 if (Array.isArray(source)) {
                     const newArray = [];
@@ -82,7 +76,7 @@ const crawler = new PlaywrightCrawler({
                     }
                     return newArray;
                 }
-            
+
                 // 4. If it's an object, iterate over its keys and recursively copy values
                 const newObject = {};
                 for (const key in source) {
