@@ -1,15 +1,15 @@
 import { Dataset } from 'crawlee';
 
 export const getDataset = async () => {
-    return await Dataset.open('crawl-b');
+    return await Dataset.open('crawl-c');
 }
 
 export const getFailuresDataset = async () => {
-    return await Dataset.open('failures-b');
+    return await Dataset.open('failures-c');
 }
 
 export const getPrebidDataset = async () => {
-    return await Dataset.open('prebid-b');
+    return await Dataset.open('prebid-c');
 }
 
 export const exportDataset = async (datasetKey: string) => {
